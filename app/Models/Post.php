@@ -14,4 +14,9 @@ class Post extends Model
     protected $table = 'posts'; // наименование таблицы
     protected $quarded = false; // это правило чтобы мог изменять данные в таблице(чтобы небыло ошибок)
     protected $fillable = ['title','content'];  // чтобы записать в бд тайтл
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');       
+    }
 }

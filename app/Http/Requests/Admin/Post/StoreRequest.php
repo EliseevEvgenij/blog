@@ -27,7 +27,9 @@ class StoreRequest extends FormRequest
             'content' => 'required|string|unique:posts,content',
             'preview_image' => 'required|file',
             'main_image' => 'required|file',
-            'category_id' => 'required|exists:categories,id', // проверка на существование в таблице catigories
+            'category_id' => 'required|integer|exists:categories,id', // проверка на существование в таблице catigories
+            'tag_ids' => 'nullable|array', 
+            'tag_ids.*' => 'nullable|integer|exists:tags,id',  // .* означает что всё что находится внутри nag_ids . Во второй строке - проверка каждого отдельного элемента массива
         ];
     }
 }

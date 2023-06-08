@@ -12,10 +12,14 @@ class StoreController extends Controller
     public function __invoke(StoreRequest $request)   
     {
         $data = $request->validated();         // получаем тайтл из реквеста в дату
+        $tagIds = $data['tag_ids'];
+        unset($data['tag_ids']);
+
         $data['preview_image'] = Storage::put('/images', $data['preview_image']);
         $data['main_image'] = Storage::put('/images', $data['main_image']);
         //dd($data);
-        Post::create($data);  // tag::firstOrCreate([$data['title']]); // проверка на уникальность чтобы не создавались одинаковые категории (если в базе данных неуказали уникальность тайтла)  
+        $post = Post::create($data);  // tag::firstOrCreate([$data['title']]); // проверка на уникальность чтобы не создавались одинаковые категории (если в базе данных неуказали уникальность тайтла)  
+        $post->tags()->attach($tagIds);
         return redirect()->route('admin.post.index') ; // вернёт на главную по категориям 
     }
 

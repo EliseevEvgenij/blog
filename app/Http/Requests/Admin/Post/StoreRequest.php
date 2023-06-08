@@ -23,7 +23,11 @@ class StoreRequest extends FormRequest
     public function rules(): array //рулс это -правило что нужно именно из реквеста забрать
     {
         return [
-            'title' => 'required|string|unique:posts,title'
+            'title' => 'required|string|unique:posts,title',
+            'content' => 'required|string|unique:posts,content',
+            'preview_image' => 'required|file',
+            'main_image' => 'required|file',
+            'category_id' => 'required|exists:categories,id', // проверка на существование в таблице catigories
         ];
     }
 }

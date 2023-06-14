@@ -23,7 +23,13 @@ class UpdateRequest extends FormRequest
     public function rules(): array //рулс это -правило что нужно именно из реквеста забрать
     {
         return [
-            'title' => 'required|string|unique:posts,title'
+            'title' => 'required|string|unique:posts,title',
+            'content' => 'required|string|unique:posts,content',
+            'preview_image' => 'nullable|file',
+            'main_image' => 'nullable|file',
+            'category_id' => 'required|integer|exists:categories,id', // проверка на существование в таблице catigories
+            'tag_ids' => 'nullable|array', 
+            'tag_ids.*' => 'nullable|integer|exists:tags,id',  // .* означает что всё что находится внутри nag_ids . Во второй строке - проверка каждого отдельного элемента массива
         ];
     }
 }

@@ -4,12 +4,17 @@ namespace App\Http\Controllers\Admin\Post;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\Tag;
 
 class EditController extends Controller
 {
     public function __invoke(Post $post)  // так как в роуте (Route::get('/{post}')
     {
-        return view('admin.post.edit', compact('post')); //путь майн/индексблэйд
+        $categories = Category::all();
+        $tags = Tag::all();
+        // dd($post->tags)->pluck('id');
+        return view('admin.post.edit', compact('post' ,'categories', 'tags')); //путь майн/индексблэйд
     }
 
 }

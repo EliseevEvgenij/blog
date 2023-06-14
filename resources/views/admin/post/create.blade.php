@@ -31,7 +31,7 @@
           <div class="col-12">
             <form action="{{ route('admin.post.store') }}" method="POST" enctype="multipart/form-data" >         
             @csrf   <!-- если метод ПОСТ kсрф надо ставить чтобы заработало -->
-            <div class="form-group w-25">               <!--  w-25 это ширина столбца(формы) -->
+              <div class="form-group w-25">               <!--  w-25 это ширина столбца(формы) -->
                     <input type="text" class="form-control" name="title" placeholder="Название поста"
                      value="{{old('title')}}">     <!-- old - чтобы при одном не заполненном не сбрасывалось другое поле -->
                     @error('title')
@@ -89,14 +89,14 @@
                   <label>Тэги</label>
                   <select class="select2" name="tag_ids[]" multiple="multiple" data-placeholder="Выберите тэги" style="width: 100%;">
                     @foreach($tags as $tag)
-                  <option value="{{$tag->id}}">{{$tag->title}}</option>
+                  <option {{is_array( old('tag_ids') ) && in_array($tag->id, old('tag_ids')) ? 'selected' : ''}} value="{{$tag->id}}">{{$tag->title}}</option>
                   @endforeach
                   </select>
                 </div>
 
                   <div class="form-group">
                       <input type="submit" class="btn btn-primary" value="Добавить">
-                  </div>
+              </div>
 
             </form>
           </div>

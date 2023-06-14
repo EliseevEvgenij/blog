@@ -13,7 +13,7 @@ class Post extends Model
 
     protected $table = 'posts'; // наименование таблицы
     protected $quarded = false; // это правило чтобы мог изменять данные в таблице(чтобы небыло ошибок)
-    protected $fillable = ['title','content'];  // чтобы записать в бд тайтл
+    protected $fillable = ['title','content','preview_image','main_image','category_id'];  // чтобы записать в бд тайтл
 
     public function tags()
     {

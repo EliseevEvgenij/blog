@@ -53,6 +53,18 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'],
         Route::patch('/{tag}', 'UpdateController')->name('admin.tag.update');
         Route::delete('/{tag}', 'DeleteController')->name('admin.tag.delete');
     });
+
+    Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
+        Route::get('/', 'IndexController')->name('admin.user.index'); //name это ссылка на иконку user
+        Route::get('/create', 'CreateController')->name('admin.user.create'); 
+        Route::post('/', 'StoreController')->name('admin.user.store'); // создание(user) всегда POST 
+        Route::get('/{user}', 'ShowController')->name('admin.user.show'); // если ссылка то get() ставим 
+        Route::get('/{user}/edit', 'EditController')->name('admin.user.edit'); //  
+        Route::patch('/{user}', 'UpdateController')->name('admin.user.update');
+        Route::delete('/{user}', 'DeleteController')->name('admin.user.delete');
+    });
+
+    
 });
 
 

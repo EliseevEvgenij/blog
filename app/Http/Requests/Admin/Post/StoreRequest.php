@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin\Post;
 
+use GuzzleHttp\Psr7\Message;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Contracts\Service\Attribute\Required;
 

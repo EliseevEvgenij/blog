@@ -16,5 +16,4 @@ class IndexController extends Controller
          return view('admin.user.index',     //путь майн/индексблэйд    это блэйд
          ['users'=>$user]);   // передаём список postov 
     }
-
 }

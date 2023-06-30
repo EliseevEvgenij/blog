@@ -36,7 +36,25 @@
                     <input type="text" class="form-control" name="name" placeholder="Имя пользователя"
                     value="{{ $user->name }}">
                     @error('name')
-                        <div class="text-danger">Это поле обезательно для заполнения</div>
+                        <div class="text-danger">{{$message}}</div>
+                    @enderror 
+                  </div>
+            <div class="form-group">  
+              <input type="text" value="{{ $user->email }}" class="form-control" name="email" placeholder="Email" >
+              @error('email')
+              <div class="text-danger">{{$message}}</div>
+              @enderror 
+            </div>
+            <div class="form-group">  
+                    <input type="text" class="form-control" name="password" placeholder="Password">
+                    @error('password')
+                        <div class="text-danger">{{$message}}</div>
+                    @enderror 
+                  </div>
+                  <div class="form-group">          <!--  ПОВТОРНАЯ ПРОВЕРКА ПОРОЛЯ -->
+                    <input type="password" name="password_confirmation"> 
+                    @error('email')
+                    <div class="text-danger">{{$message}}</div>
                     @enderror 
                   </div>
                   <input type="submit" class="btn btn-primary" value="Обновить">

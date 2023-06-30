@@ -6,12 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\UpdateRequest;
 use App\Models\User;
 
-class UpdateController extends Controller
+class UpdateController extends Controller    // обнавление(редактирование)
 {
     public function __invoke(UpdateRequest $request, User $user)  // так как в роуте (Route::get('/{category}')
     {
-        //dd($request);
-        $data = $request -> validate(array('title'=>'required'));    // обнавляем категорию
+        
+        $data = $request -> validated();    
+        //dd($data);
         $user -> update($data);
         return view('admin.user.show', compact('user')); //путь майн/индексблэйд
     }

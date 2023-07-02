@@ -27,6 +27,7 @@ class StoreRequest extends FormRequest
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string|',
             'password' => 'required|min:6|confirmed', // повторная проверка пороля
+            'role' => 'required|integer'
              
         ];
     }

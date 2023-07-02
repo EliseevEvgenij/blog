@@ -9,7 +9,8 @@ class EditController extends Controller
 {
     public function __invoke(User $user)  // так как в роуте (Route::get('/{user}')
     {
-        return view('admin.user.edit', compact('user')); //путь майн/индексблэйд
+        $roles = User::getRoles();
+        return view('admin.user.edit', compact('user','roles')); //путь майн/индексблэйд
     }
 
 }

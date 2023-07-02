@@ -27,13 +27,14 @@ class UpdateRequest extends FormRequest
             'email' => 'required|string|email|unique:users,email,'.$this->user->id,  //проверяет на уникальность email'а, исключая из проверки пользователя по своему id.
             'password' => 'required|string|',
             'password' => 'required|min:6|confirmed', // повторная проверка пороля
+            'role' => 'required|integer'
         ];
     }
     public function messages()
     {
         return [
             'name.required' => 'Это поле необходимо для заполнения',
-            'name.string' => 'Имя должно быть строкой',
+            'name.string' => 'Имя должно быть строкой', 
             'email.required' => 'Это поле необходимо для заполнения',
             'email.string' => 'Почта должно быть строкой',
             'email.email' => 'Ваша почта должна соответствовать формату example@mail.ru',
